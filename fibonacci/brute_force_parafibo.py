@@ -9,9 +9,27 @@ def solve(n):
                 solution = solve(n-2) + solve(n-1)
                 return solution
 
+def secuencialFibo(n):
+     
+    solutions = [None] * n
+
+    time1 = time.time()
+
+    for index in range(n):
+        solutions[index] = solve(index)
+
+    time2 = time.time()
+    actual_time = time2 - time1
+
+    for index in range(n):
+        print(f" Fibonacci N.{index}: {solutions[index]} \n")
+
+    print(f"Seconds: {actual_time} \n")
+
+    return None
+
 def paraFibo(n, function):
 
-    # 8 process, 20 numbers
 
 
     time1 = time.time()
@@ -26,11 +44,12 @@ def paraFibo(n, function):
     for index in range(n):
         print(f" Fibonacci N.{index}: {solutions[index]} \n")
 
-    print(f"Seconds: {actual_time}")
+    print(f"Seconds: {actual_time} \n")
 
     return None
 
 if __name__ == "__main__":
+    secuencialFibo(20)
     paraFibo(20, ThreadPoolExecutor)
     paraFibo(20, ProcessPoolExecutor)
 
